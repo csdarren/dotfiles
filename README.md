@@ -14,8 +14,8 @@ git clone wezterm.lua into the same directory as the wezterm executable
 ## WSL2 if windows, skip to next # if on linux etc
 ### NOTE: wezterm.lua is setup to use wsl by default and will throw errors without it
 
-[WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
-(     wsl --install     )
+[WSL](https://learn.microsoft.com/en-us/windows/wsl/install)  
+CMD PROMPT: ```wsl --install```
 
 ## .zshrc shell
 
@@ -23,7 +23,8 @@ git clone wezterm.lua into the same directory as the wezterm executable
 [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
 
 ```
-sudo apt install zsh && chsh -s $(which zsh)
+sudo apt install zsh && \
+chsh -s $(which zsh)
 ```
 
 [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/tree/master)
@@ -41,10 +42,9 @@ git clone into ~/.zshrc
 [neovim < v0.11](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
 ```
-sudo add-apt-repository ppa:neovim-ppa/stable
-
-sudo apt update && sudo apt upgrade
-
+sudo add-apt-repository ppa:neovim-ppa/stable && \
+sudo apt update && \
+sudo apt upgrade && \
 sudo apt install neovim
 ```
 
