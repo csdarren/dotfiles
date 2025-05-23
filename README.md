@@ -33,7 +33,13 @@ chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)
 ```
 
-git clone into ~/.zshrc
+[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+
+```
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+git clone into ~/.zshrc 
 
 ## Neovim IDE/Editor
 ### NOTE: ADD PPA REPO BEFORE installing! Otherwise you will get outdated neovim
