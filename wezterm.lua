@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 return {
 	color_scheme = "Gruvbox Material (Gogh)",
 	-- window_decorations = "NONE",
-	font = wezterm.font("JetBrainsMono Nerd Font"),
+	font = wezterm.font("JetBrains Mono"),
 	font_size = 11.0,
 	-- dpi = 192.0,
 	leader = { key = "a", mods = "CTRL" },
@@ -41,5 +41,5 @@ return {
 		{ key = "d", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
 		{ key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
 	},
-	default_domain = "WSL:Ubuntu-24.04",
+	--default_domain = "WSL:Ubuntu-24.04",
 }
