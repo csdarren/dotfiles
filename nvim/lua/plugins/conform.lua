@@ -8,6 +8,7 @@ return {
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "ruff" }, -- Conform will run multiple formatters sequentially
+                cpp = { "clang-format" },
 
                 -- Conform will run the first available formatter
                 -- javascript = { "prettierd", "prettier", stop_after_first = true },

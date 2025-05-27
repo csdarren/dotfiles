@@ -11,6 +11,7 @@ return {
             end
 
             opts.servers.ruff = { autostart = false }
+            opts.inlay_hints = { enabled = false }
         end,
     },
     {
@@ -19,6 +20,7 @@ return {
             ensure_installed = {
                 "pyright",
                 "ruff",
+                "clangd",
             },
         },
     },

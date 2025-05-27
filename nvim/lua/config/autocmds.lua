@@ -34,4 +34,11 @@ return {
             vim.bo.expandtab = true
         end,
     }),
+    -- autocmd to make any file in /include directories readonly
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = { "*/include/*" },
+        callback = function()
+            vim.bo.modifiable = false
+        end,
+    }),
 }
