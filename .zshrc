@@ -107,3 +107,12 @@ RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
+export PATH="$PATH:/opt/nvim-linux-arm64/bin"
+
+. "$HOME/.local/bin/env"
+
+alias ctls="systemctl status" # systemctl status
+alias ctlr="systemctl restart" # systemctl restart
+alias ctlb="systemctl start" # systemctl begin
+alias ctle="systemctl stop" # systemctl end
+alias ctl="systemctl" #systemctl
