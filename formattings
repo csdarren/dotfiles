@@ -1,0 +1,34 @@
+CompileFlags:
+    Add: [
+        "-march=rv32imafc_zicsr_zifencei", # Omits xesppie error 
+        "--target=riscv32-esp-elf",
+
+        # Most Includes break without this:
+        -I/home/dhall/.espressif/tools/esp-clang/esp-19.1.2_20250312/esp-clang/lib/clang-runtimes/riscv32-esp-unknown-elf/rv32imac-zicsr-zifencei_ilp32/include,
+        -I/opt/esp-idf/components/riscv/include,
+    ]
+    Remove: [
+        -fno-shrink-wrap, #clangd specific error, omitted using GCC
+        -fno-tree-switch-conversion, #clangd specific error, omitted using GCC
+        -fstrict-volatile-bitfields, #clangd specific error, omitted using GCC
+    ]
+Diagnostics:
+    Suppress: [unused-includes,
+    misc-use-anonymous-namespace,
+    cppcoreguidelines-avoid-c-arrays,
+    cppcoreguidelines-avoid-magic-numbers,
+    cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+    -Wmissing-designated-field-initializers,
+    readability-implicit-bool-conversion,
+    modernize-avoid-c-arrays,
+    modernize-deprecated-headers,
+    misc-unused-parameters,
+    misc-use-internal-linkage,
+    readability-magic-numbers,
+    cppcoreguidelines-avoid-do-while,
+    -Wc99-designator,
+    cppcoreguidelines-pro-type-vararg,
+    cppcoreguidelines-pro-type-union-access,
+    readability-function-cognitive-complexity,
+    cppcoreguidelines-avoid-non-const-global-variables,
+    ]
