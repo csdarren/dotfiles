@@ -47,6 +47,8 @@ git clone into ~/.zshrc
 ### Prerequisites:
 [neovim < v0.11](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
+NOTE: USE DIRECT APP INSTEAD, MUST SYMLINK IN ORDER FOR IT TO WORK EVERYWHERE
+TODO: ADD DIRECT APP INSTALL INSTRUCTIONS
 ```
 sudo add-apt-repository ppa:neovim-ppa/stable && \
 sudo apt update && \
@@ -58,3 +60,22 @@ git clone into ~/.config/nvim
 
 you may need to create these directories
 
+In order for neovim tools to install, you need the following packages (ubuntu)
+(tools such as ruff, pyright etc)
+```
+sudo apt install python3.12-venv && \
+sudo apt install npm
+sudo apt install unzip
+```
+
+### Additional Requirements per-maybe:
+uv package manager
+
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+OR
+wget -qO- https://astral.sh/uv/install.sh | sh
+```
+
+OR CHECK DOCS:
+[uv install docs](https://docs.astral.sh/uv/getting-started/installation/)
