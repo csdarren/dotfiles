@@ -57,7 +57,7 @@ sudo apt install unzip
 
 
 # Additional tools per-maybe:
-## [uv package manager for python](https://docs.astral.sh/uv/getting-started/installation/)
+### [uv package manager for python](https://docs.astral.sh/uv/getting-started/installation/)
 ```
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
