@@ -9,6 +9,8 @@ return {
                 lua = { "stylua" },
                 python = { "ruff" }, -- Conform will run multiple formatters sequentially
                 cpp = { "clang-format" },
+                json = { "jq" },
+                yaml = { "prettier" },
 
                 -- Conform will run the first available formatter
                 -- javascript = { "prettierd", "prettier", stop_after_first = true },

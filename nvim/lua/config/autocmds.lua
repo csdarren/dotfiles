@@ -34,6 +34,26 @@ return {
             vim.bo.expandtab = true
         end,
     }),
+    -- keep json at 2 spaces
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "json", "jsonc" },
+        callback = function()
+            vim.bo.shiftwidth = 2
+            vim.bo.tabstop = 2
+            vim.bo.softtabstop = 2
+            vim.bo.expandtab = true
+        end,
+    }),
+    -- keep yml at 2 spaces
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "yml" },
+        callback = function()
+            vim.bo.shiftwidth = 2
+            vim.bo.tabstop = 2
+            vim.bo.softtabstop = 2
+            vim.bo.expandtab = true
+        end,
+    }),
     -- autocmd to make any file in /include directories readonly
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
         pattern = { "*/include/*" },
