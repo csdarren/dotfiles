@@ -2,7 +2,6 @@
 Holding place for my dot files / configs. zshrc, wezterm, nvim, etc
 
 
-##
 # [WezTerm](https://wezterm.org/installation.html)
 TODO: ADD wezterm install instructions for both linux and windows here
 
@@ -14,16 +13,13 @@ extract, and run: JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Regular.ttf (Shoul
 NOTE: this font is required for proper icons in neovim
 
 
-##
 # [WSL (WINDOWS ONLY)](https://learn.microsoft.com/en-us/windows/wsl/install)  
 ```
 wsl --install
 ```
 
 
-##
 # [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
-NOTE: Much better shell than bash
 
 Install:
 ```
@@ -46,7 +42,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ```
 
 
-
 # [neovim < v0.11](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
 Install:
@@ -59,8 +54,6 @@ sudo apt install npm
 sudo apt install unzip
 ```
 
-In order for neovim tools to install, you need the following packages (ubuntu)
-(tools such as ruff, pyright etc)
 
 # Additional Requirements per-maybe:
 ## [uv package manager for python](https://docs.astral.sh/uv/getting-started/installation/)
