@@ -43,6 +43,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 
 # [neovim < v0.11](https://github.com/neovim/neovim/blob/master/INSTALL.md)
+NOTE: In order for sudo nvim to use your setup, you must place nvim folder in root, see Multi-user / New device setup section below
 
 Install:
 ```
@@ -55,7 +56,7 @@ sudo apt install unzip
 ```
 
 
-# Additional Requirements per-maybe:
+# Additional tools per-maybe:
 ## [uv package manager for python](https://docs.astral.sh/uv/getting-started/installation/)
 ```
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -67,8 +68,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 Run from dotfiles directory:
 ```
 sudo cp ./.zshrc /etc/skel/.zshrc
-sudo mkdir /etc/skel/.config
-sudo cp -r ./nvim /etc/skel/.config
+sudo mkdir /etc/skel/.config && sudo cp -r ./nvim /etc/skel/.config
+sudo mkdir /root/.config && sudo cp -r ./nvim /root/.config
 ```
 
 
