@@ -4,23 +4,21 @@ Holding place for my dot files / configs. zshrc, wezterm, nvim, etc
 ## Wezterm terminal
 
 ### Prerequisites:
-[WezTerm](https://wezterm.org/installation.html)
-
-[JetBrainsMono-regular font](https://www.jetbrains.com/lp/mono/) Must download and install this font
-extract, then: JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Regular.ttf <- Run this, should work on both windows and linux
-
+## [WezTerm](https://wezterm.org/installation.html)
 git clone wezterm.lua into the same directory as the wezterm executable
+### NOTE: this wezterm.lua file is setup to use wsl by default and will throw errors without it
 
-## WSL2 if windows, skip to next # if on linux etc
-### NOTE: wezterm.lua is setup to use wsl by default and will throw errors without it
+### [JetBrainsMono-regular font](https://www.jetbrains.com/lp/mono/)
+extract, and run: JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Regular.ttf (Should work on linux & windows)
 
-[WSL](https://learn.microsoft.com/en-us/windows/wsl/install)  
+
+## [WSL (WINDOWS ONLY)](https://learn.microsoft.com/en-us/windows/wsl/install)  
 CMD PROMPT: ```wsl --install```
 
 ## .zshrc shell
 
 ### Prerequisites:
-[zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
+## [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
 
 ```
 sudo apt install zsh && \
@@ -28,7 +26,7 @@ chsh -s $(which zsh)
 ```
 
 
-[ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/tree/master)
+## [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/tree/master)
 
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)
@@ -37,7 +35,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## Single user commands:
 
-# Run from inside dotfiles direcrory:
+### Run from inside dotfiles direcrory:
 ```
 cp ./.zshrc ~/
 mkdir ~/.config
