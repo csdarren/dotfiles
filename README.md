@@ -68,8 +68,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 Run from dotfiles directory:
 ```
 sudo cp ./.zshrc /etc/skel/.zshrc
-sudo mkdir /etc/skel/.config && sudo cp -r ./nvim /etc/skel/.config
-sudo mkdir /root/.config && sudo cp -r ./nvim /root/.config
+sudo mkdir -p /etc/skel/.config && sudo cp -r ./nvim /etc/skel/.config
+sudo mkdir -p /root/.config && sudo cp -r ./nvim /root/.config
 ```
 
 
