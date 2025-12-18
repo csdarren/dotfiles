@@ -1,97 +1,90 @@
 # dotfiles
 Holding place for my dot files / configs. zshrc, wezterm, nvim, etc
 
-## Wezterm terminal
 
-### Prerequisites:
-## [WezTerm](https://wezterm.org/installation.html)
-git clone wezterm.lua into the same directory as the wezterm executable
-### NOTE: this wezterm.lua file is setup to use wsl by default and will throw errors without it
+##
+# [WezTerm](https://wezterm.org/installation.html)
+TODO: ADD wezterm install instructions for both linux and windows here
+
+Move wezterm.lua into the same directory as the wezterm executable
+NOTE: this wezterm.lua file is setup to use wsl by default and will throw errors without it
 
 ### [JetBrainsMono-regular font](https://www.jetbrains.com/lp/mono/)
 extract, and run: JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Regular.ttf (Should work on linux & windows)
+NOTE: this font is required for proper icons in neovim
 
 
-## [WSL (WINDOWS ONLY)](https://learn.microsoft.com/en-us/windows/wsl/install)  
-CMD PROMPT: ```wsl --install```
+##
+# [WSL (WINDOWS ONLY)](https://learn.microsoft.com/en-us/windows/wsl/install)  
+```
+wsl --install
+```
 
-## .zshrc shell
 
-### Prerequisites:
-## [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
+##
+# [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
+NOTE: Much better shell than bash
 
+Install:
 ```
 sudo apt install zsh && \
 chsh -s $(which zsh)
 ```
 
+### [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/tree/master)
+NOTE: Required for zsh plugins like syntax highlighting and autocomplete
 
-## [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/tree/master)
-
+Install:
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)
 ```
 
-
-## Single user commands:
-
-### Run from inside dotfiles direcrory:
-```
-cp ./.zshrc ~/
-mkdir ~/.config
-cp -r ./nvim ~/.config
-```
-
-```
-[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
-
-I dont think this is necessary anymore
+### [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+NOTE: I dont think this is necessary anymore
 ```
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
-## Suggested changes to new linux machine:
 
-# Run from dotfiles directory:
-```
-sudo cp ./.zshrc /etc/skel/.zshrc
-sudo mkdir /etc/skel/.config
-sudo cp ./nvim /etc/skel/.config
-```
 
-## Neovim IDE/Editor
+# [neovim < v0.11](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
-### Prerequisites:
-[neovim < v0.11](https://github.com/neovim/neovim/blob/master/INSTALL.md)
-
-Using appimage, curl URL may change, but should pull latest.
-nvim file is moved to /usr/bin/nvim so its automatically available everywhere
+Install:
 ```
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
 sudo chmod u+x nvim-linux-x86_64.appimage
 sudo mv ./nvim-linux-x86_64.appimage /usr/bin/nvim
-```
-
-git clone into ~/.config/nvim
-
-you may need to create these directories
-
-In order for neovim tools to install, you need the following packages (ubuntu)
-(tools such as ruff, pyright etc)
-```
 sudo apt install python3.12-venv
 sudo apt install npm
 sudo apt install unzip
 ```
 
-### Additional Requirements per-maybe:
-uv package manager
+In order for neovim tools to install, you need the following packages (ubuntu)
+(tools such as ruff, pyright etc)
 
+# Additional Requirements per-maybe:
+## [uv package manager for python](https://docs.astral.sh/uv/getting-started/installation/)
 ```
 curl -LsSf https://astral.sh/uv/install.sh | sh
-OR
-wget -qO- https://astral.sh/uv/install.sh | sh
 ```
 
-OR CHECK DOCS:
-[uv install docs](https://docs.astral.sh/uv/getting-started/installation/)
+
+# Multi-user / New device setup
+
+Run from dotfiles directory:
+```
+sudo cp ./.zshrc /etc/skel/.zshrc
+sudo mkdir /etc/skel/.config
+sudo cp -r ./nvim /etc/skel/.config
+```
+
+
+# Single user setup
+NOTE: This sets up just the current user
+
+Run from dotfiles directory:
+```
+cp ./.zshrc ~/
+mkdir ~/.config
+cp -r ./nvim ~/.config
+```
