@@ -27,33 +27,51 @@ sudo apt install zsh && \
 chsh -s $(which zsh)
 ```
 
+
 [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/tree/master)
 
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)
 ```
 
+
+## Single user commands:
+
+# Run from inside dotfiles direcrory:
+```
+cp ./.zshrc ~/
+mkdir ~/.config
+cp -r ./nvim ~/.config
+```
+
+```
 [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
+I dont think this is necessary anymore
 ```
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
-git clone into ~/.zshrc 
+## Suggested changes to new linux machine:
+
+# Run from dotfiles directory:
+```
+sudo cp ./.zshrc /etc/skel/.zshrc
+sudo mkdir /etc/skel/.config
+sudo cp ./nvim /etc/skel/.config
+```
 
 ## Neovim IDE/Editor
-### NOTE: ADD PPA REPO BEFORE installing! Otherwise you will get outdated neovim
 
 ### Prerequisites:
 [neovim < v0.11](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
-NOTE: USE DIRECT APP INSTEAD, MUST SYMLINK IN ORDER FOR IT TO WORK EVERYWHERE
-TODO: ADD DIRECT APP INSTALL INSTRUCTIONS
+Using appimage, curl URL may change, but should pull latest.
+nvim file is moved to /usr/bin/nvim so its automatically available everywhere
 ```
-sudo add-apt-repository ppa:neovim-ppa/stable && \
-sudo apt update && \
-sudo apt upgrade && \
-sudo apt install neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+sudo chmod u+x nvim-linux-x86_64.appimage
+sudo mv ./nvim-linux-x86_64.appimage /usr/bin/nvim
 ```
 
 git clone into ~/.config/nvim
@@ -63,7 +81,7 @@ you may need to create these directories
 In order for neovim tools to install, you need the following packages (ubuntu)
 (tools such as ruff, pyright etc)
 ```
-sudo apt install python3.12-venv && \
+sudo apt install python3.12-venv
 sudo apt install npm
 sudo apt install unzip
 ```
