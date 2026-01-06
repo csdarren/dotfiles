@@ -7,8 +7,6 @@ source $ZSH/oh-my-zsh.sh # Activate oh-my-zsh
 
 ZSH_THEME="agnoster" # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-
-
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -30,3 +28,9 @@ export PATH="$PATH:$(go env GOPATH)/bin" # go?
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
+#
+dotup() {
+  cd ~/dotfiles || return
+  git pull
+  git status
+}
