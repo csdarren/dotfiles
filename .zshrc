@@ -29,8 +29,26 @@ export PATH="$PATH:$(go env GOPATH)/bin" # go?
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 #
-dotup() {
-  cd ~/dotfiles || return
+dot() {
+    git -C ~/dotfiles "$@"
+}
+
+dotpull() {
   git pull
   git status
+}
+
+dotpush() {
+    dot add .
+    dot commit -m "Updated config"
+    dot status
+
+    read -q "REPLY?Push These Changes? (y/n) "
+    echo
+
+    if [[ "$REPLY" == "y" ]]; then
+    dot push
+else
+    echo "Aborted push."
+    fi
 }
