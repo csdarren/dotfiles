@@ -1,4 +1,6 @@
 local wezterm = require("wezterm")
+modal = wezterm.plugin.require("https://github.com/csdarren/modal.wezterm")
+
 local config = wezterm.config_builder()
 
 local function basename(s)
@@ -128,6 +130,48 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	}
 end)
 
+modal.enable_defaults("https://github.com/csdarren/modal.wezterm")
+
+-- local key_table = require("ui_mode").key_table
+--
+-- local icons = {
+-- 	left_seperator = wezterm.nerdfonts.ple_left_half_circle_thick,
+-- 	key_hint_seperator = " | ",
+-- 	mod_seperator = "-",
+-- }
+-- local hint_colors = {
+-- 	key_hint_seperator = "Yellow",
+-- 	key = "Green",
+-- 	hint = "Red",
+-- 	bg = "Black",
+-- 	left_bg = "Gray",
+-- }
+-- local mode_colors = { bg = "Red", fg = "Black" }
+-- local status_text = require("ui_mode").get_hint_status_text(icons, hint_colors, mode_colors)
+--
+-- modal.add_mode("UI", key_table, status_text)
+
+config.key_tables = modal.key_tables
+
+config.color_scheme = "Gruvbox Material (Gogh)"
+config.colors = {
+	background = "#1d2021",
+	tab_bar = {
+		background = "#1d2021",
+	},
+}
+
+modal.apply_to_config(config)
+wezterm.on("modal.enter", function(name, window, pane)
+	modal.set_right_status(window, name)
+	modal.set_window_title(pane, name)
+end)
+
+wezterm.on("modal.exit", function(name, window, pane)
+	window:set_right_status("NORMAL")
+	modal.reset_window_title(pane)
+end)
+
 config.default_domain = "WSL:Ubuntu-24.04"
 config.window_decorations = "RESIZE | TITLE"
 config.default_cursor_style = "BlinkingBlock"
@@ -140,28 +184,21 @@ config.window_close_confirmation = "NeverPrompt"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 12.0
 config.line_height = 1.15
-config.color_scheme = "Gruvbox Material (Gogh)"
-config.colors = {
-	background = "#1d2021",
-	tab_bar = {
-		background = "#1d2021",
-	},
-}
 config.dpi = 100.0
 
-config.leader = { key = "]", mods = "CTRL" }
+config.leader = { key = " ", mods = "CTRL" }
 config.disable_default_key_bindings = true
 config.keys = {
 	-- Allows sending a literal CTRL + a to the shell/terminal.
 	{ key = "]", mods = "LEADER|CTRL", action = wezterm.action({ SendString = "\x01" }) },
 	-- Split terminal vertically
-	{ key = "s", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
+	-- { key = "s", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 	-- Split terminal horizontally
-	{ key = "v", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
+	-- { key = "v", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 	-- Toggle Focus on Current tab (Toggle again to return to normal)
 	{ key = "z", mods = "LEADER", action = "TogglePaneZoomState" },
 	-- Create new tab
-	{ key = "n", mods = "LEADER", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
+	-- { key = "n", mods = "LEADER", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
 	-- Vim motions for swapping Split Panes
 	{ key = "h", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
 	{ key = "j", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
@@ -183,7 +220,7 @@ config.keys = {
 	{ key = "8", mods = "LEADER", action = wezterm.action({ ActivateTab = 7 }) },
 	{ key = "9", mods = "LEADER", action = wezterm.action({ ActivateTab = 8 }) },
 	-- Close Pane/Tab, both forced and confirmed
-	{ key = "d", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
+	-- { key = "d", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
 	-- Spawn new tab with windows cmd open
 	{
 		key = "C",
@@ -206,21 +243,26 @@ config.keys = {
 		}),
 	},
 	{
-		key = "W",
-		mods = "LEADER|SHIFT",
+		key = "w",
+		mods = "LEADER",
 		action = wezterm.action({
 			SpawnCommandInNewTab = {
 				domain = { DomainName = "WSL:Ubuntu-24.04" },
-				args = { "zsh", "-ic", "nvim /mnt/c/Users/dhall/.wezterm.lua" },
+				args = {
+					"zsh",
+					"-ic",
+					"nvim $WIN_HOME/.wezterm.lua",
+				},
 			},
 		}),
 	},
-	-- Refresh wezterm config
-	{ key = "r", mods = "LEADER", action = wezterm.action.ReloadConfiguration },
-	-- Enter Copy Mode
-	{ key = "v", mods = "LEADER|SHIFT", action = wezterm.action.ActivateCopyMode },
 	-- Activate command pallete
 	{ key = "p", mods = "LEADER", action = wezterm.action.ActivateCommandPalette },
+	-- Activating vim modes
+	{ key = "c", mods = "LEADER", action = modal.activate_mode("copy_mode") },
+	{ key = "u", mods = "LEADER", action = modal.activate_mode("UI") },
+	{ key = "/", mods = "LEADER", action = modal.activate_mode("search_mode") },
+	{ key = "n", mods = "LEADER", action = modal.activate_mode("Scroll") },
 }
 
 return config

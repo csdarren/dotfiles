@@ -2,9 +2,6 @@ zstyle ':omz:update' mode auto # update automatically without asking
 
 zstyle ':omz:update' frequency 14 # update frequency
 
-export ZSH="$HOME/.oh-my-zsh" # Path to your Oh My Zsh installation.
-source $ZSH/oh-my-zsh.sh # Activate oh-my-zsh
-
 ZSH_THEME="agnoster" # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 # Standard plugins can be found in $ZSH/plugins/
@@ -13,11 +10,16 @@ ZSH_THEME="agnoster" # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
+    # vi-mode
     zsh-syntax-highlighting
 )
 
-export PATH="$PATH:$(go env GOPATH)/bin" # go?
+# Expose windows home directory from within WSL
+export WIN_HOME="$(wslpath "$(cmd.exe /d C:\\ /c "echo %USERPROFILE%" 2>/dev/null | tr -d '\r')")"
 
+# Ensure oh-my-zsh is loaded after plugins and theme
+export ZSH="$HOME/.oh-my-zsh" # Path to your Oh My Zsh installation.
+source $ZSH/oh-my-zsh.sh      # Activate oh-my-zsh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 
@@ -34,8 +36,8 @@ dot() {
 }
 
 dotpull() {
-  git pull
-  git status
+    git pull
+    git status
 }
 
 dotpush() {
@@ -44,11 +46,13 @@ dotpush() {
     dot status
 
     read -q "REPLY?Push These Changes? (y/n) "
-    echo
 
     if [[ "$REPLY" == "y" ]]; then
-    dot push
-else
-    echo "Aborted push."
+        dot push
+    else
+        echo "Aborted push."
     fi
 }
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
