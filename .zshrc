@@ -10,7 +10,7 @@ ZSH_THEME="agnoster" # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    # vi-mode
+    vi-mode
     zsh-syntax-highlighting
 )
 
